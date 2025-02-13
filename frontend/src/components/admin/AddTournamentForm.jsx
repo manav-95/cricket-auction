@@ -208,7 +208,7 @@ const AddTournamentForm = () => {
             <img
               src={imagePreview}
               alt="Tournament"
-              className="mt-2 h-32 w-full object-cover rounded-md"
+              className="mt-2 h-96 w-full object-cover rounded-md"
             />
           )}
         </div>
