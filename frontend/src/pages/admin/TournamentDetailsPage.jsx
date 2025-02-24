@@ -45,7 +45,7 @@ const TournamentDetailsPage = () => {
               <img
                 src={tournamentDetails.image ? `http://localhost:5000/${tournamentDetails.image}` : Placeholder}
                 alt="tournament image"
-                className="h-full w-full object-cover aspect-[2/1] rounded opacity-80"
+                className="h-full w-full object-cover aspect-[8/3] rounded opacity-80"
               />
               <div className="absolute inset-0 bg-black bg-opacity-65 text-white">
 

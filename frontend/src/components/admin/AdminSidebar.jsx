@@ -21,7 +21,7 @@ const AdminSidebar = () => {
             <h2 className="text-2xl font-bold mb-6 text-center">Hello Admin</h2>
             <ul>
                 {sidebarItems.map((item, index) => {
-                    const isActive = location.pathname === item.path;
+                    const isActive = location.pathname.startsWith(item.path) ;
                     const IconComponent = item.icon;
                     return (
                         <li key={index} className="mb-2">

@@ -6,6 +6,7 @@ import connectDB from "./config/db.js"
 import path from "path";
 
 import addTournamentRoutes from "./routes/addTournamentRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,7 @@ connectDB();
 
 // Routes
 app.use("/api/addtournament", addTournamentRoutes);
+app.use("/api/users", userRoutes);
 
 
 const PORT = process.env.PORT || 5000;

@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
-import { createTournament, getTournaments } from "../controllers/addTournamentController.js";
+import { createTournament, getTournaments, deleteTournamentById, getTournamentById } from "../controllers/addTournamentController.js";
 import addTournament from '../models/addTournament.js';
 
 
@@ -16,43 +16,17 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post("/", upload.single("image"), createTournament);
+
+// GET All Tournaments
 router.get("/", getTournaments);
 
-// DELETE Tournament
-router.delete("/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deletedTournament = await addTournament.findByIdAndDelete(id);
 
-        if (!deletedTournament) {
-            return res.status(404).json({ message: "Tournament not found" });
-        }
-
-        res.json({ message: "Tournament deleted successfully" });
-    } catch (error) {
-        console.error("Error deleting tournament:", error);
-        res.status(500).json({ message: "Internal server error" });
-    }
-});
-
-// get tournament by id
-router.get("/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const tournament = await addTournament.findById(id);
-
-        if (!tournament) {
-            return res.status(404).json({ message: "Tournament not found" });
-        }
-
-        res.json(tournament);
-    } catch (error) {
-        console.error("Error fetching tournament:", error);
-        res.status(500).json({ message: "Internal server error" });
-    }
-});
+// DELETE Tournaments By ID
+router.delete("/:id", deleteTournamentById);
 
 
+// GET Tournaments By ID
+router.get("/:id", getTournamentById);
 
 
 export default router;
